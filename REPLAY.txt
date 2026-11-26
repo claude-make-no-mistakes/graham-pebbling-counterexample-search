@@ -1,0 +1,18 @@
+Reference run    MSYS2 UCRT GCC 13.1.0 and Python 3.12.4
+Full integer replay plus independent tuple check on all residual placements.
+
+root 9 support 1 partitions 0 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 12 support 1 partitions 0 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 36 support 1 partitions 0 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 9 support 2 partitions 32 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 12 support 2 partitions 32 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 36 support 2 partitions 32 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 9 support 3 partitions 341 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 12 support 3 partitions 341 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 36 support 3 partitions 341 leaves 0 funnel 0 sweep 0 ancestry 0 unresolved 0 independently_checked 0
+root 9 support 4 partitions 1906 leaves 415766 funnel 415662 sweep 36 ancestry 68 unresolved 0 independently_checked 104
+root 12 support 4 partitions 1906 leaves 164005 funnel 163951 sweep 18 ancestry 36 unresolved 0 independently_checked 54
+root 36 support 4 partitions 1906 leaves 49080 funnel 49036 sweep 13 ancestry 31 unresolved 0 independently_checked 44
+root 9 support 5 partitions 6747 leaves 132226998 funnel 132186507 sweep 20753 ancestry 19738 unresolved 0 independently_checked 40491
+root 12 support 5 partitions 6747 leaves 42883752 funnel 42871008 sweep 5535 ancestry 7209 unresolved 0 independently_checked 12744
+root 36 support 5 partitions 6747 leaves 11196159 funnel 11190005 sweep 3213 ancestry 2941 unresolved 0 independently_checked 6154

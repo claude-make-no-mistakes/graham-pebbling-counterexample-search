@@ -1,0 +1,217 @@
+\documentclass[10pt]{article}
+\usepackage[cmex10]{amsmath}
+\usepackage{amsthm}
+\DeclareFontShape{OMX}{cmex}{m}{n}{<->cmex10}{}
+\DeclareMathSizes{10}{10}{7}{7}
+\DeclareMathSizes{9}{10}{7}{7}
+\setlength{\textwidth}{6in}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\textheight}{8.25in}
+\setlength{\topmargin}{-0.25in}
+\newtheorem{theorem}{Theorem}
+\newcommand{\sq}{\mathbin{\vcenter{\hbox{\setlength{\fboxsep}{0.6pt}%
+  \fbox{\rule{0pt}{2.4pt}\rule{2.4pt}{0pt}}}}}}
+\title{Five-vertex support in the original Lemke square}
+\author{}
+\date{November 26, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The support-five pebbling number of the original Lemke square is $64$.
+Shortest-path arguments handle every root of eccentricity four or five.
+An integer enumeration and two implementations of a pebble-ancestry check
+handle the remaining three root representatives. We also prove that every
+$64$-pebble placement with at least $60$ occupied vertices solves at every
+root. The unrestricted pebbling number remains undetermined here.
+\end{abstract}
+
+A pebbling move removes two pebbles from one vertex and puts one at a
+neighbor. A placement solves a root $r$ if a legal sequence puts a pebble at
+$r$. Its support is the set of occupied vertices. Write $\pi_k(G)$ for the
+least total for which every placement on at most $k$ vertices of $G$ solves
+every root. Graham conjectured that the unrestricted pebbling number of a
+Cartesian product is at most the product of the factor pebbling numbers.
+Pulaj, Wood and Yerger proved a support-four bound for all products of
+eight-vertex Lemke graphs \cite{pulaj}. We consider the square of the
+original factor $L$.
+
+\begin{theorem}
+$\pi_5(L\sq L)=64$. Every placement of $64$ pebbles supported on at
+least $60$ vertices also solves every root of $L\sq L$.
+\end{theorem}
+
+\section{Factor geometry}
+
+Use the numbering in Figure 1 of \cite{pulaj}. The edges of $L$ are
+\[
+12,\ 17,\ 23,\ 34,\ 36,\ 38,\ 45,\ 47,\ 56,\ 57,\ 58,\ 67,\ 78.
+\]
+The distance in the product is the sum of the coordinate distances.
+In $L$, the unique pair at distance three is $\{2,5\}$.
+For $x=2$ and $x=5$, let $y$ be its opposite vertex. Every neighbor
+of $x$ is on a shortest $x$--$y$ path, and the distance-two layer of $x$
+equals $N(y)$. For each factor root $x$, a set $B(x)$ of two neighbors
+covers its distance-two layer, meaning that every vertex in that
+layer is adjacent to at least one member of $B(x)$.
+The table gives the sets and follows directly from the edges.
+The vertices $4,6,8$ have the same open neighborhood and can be permuted.
+
+\begin{center}
+\begin{tabular}{c|rrrrrr}
+$x$ & $1$ & $2$ & $3$ & $4$ & $5$ & $7$\\
+\hline
+$B(x)$ & $\{2,7\}$ & $\{1,3\}$ & $\{2,4\}$ & $\{3,7\}$ &
+         $\{4,7\}$ & $\{1,4\}$
+\end{tabular}
+\end{center}
+
+An amount $2^d$ can send one pebble along a path of length $d$.
+More generally, a pile of size $b$ can send
+$\lfloor b/2^d\rfloor$ pebbles along the path. We can apply this
+to several piles independently by distinguishing the tokens used for
+each delivery and ignoring all others.
+
+\section{Roots of eccentricity four or five}
+
+Consider a placement on at most five vertices and a root $(x,z)$.
+Call a pile large if it contains at least eight pebbles.
+
+If the root has eccentricity four, then both factor roots have
+eccentricity two. In an unsolved placement every large pile is on
+the distance-four layer and has size at most $15$. A large pile at
+$(v,w)$ has coordinate distances $(2,2)$. It sends one pebble to
+$(a,z)$ for a neighbor $a\in B(x)$ adjacent to $v$. If there are
+three large piles, two can send to the same $(a,z)$ and solve
+the root. The total in an unsolved placement is therefore at most
+$2\cdot15+3\cdot7=51$.
+
+If the root has eccentricity five, exchange the coordinates so that
+$x$ has eccentricity three, with opposite vertex $y$. Every
+distance-five vertex has the form $(y,w)$ with $d(z,w)=2$.
+Every distance-four vertex has first coordinate at distance two
+or three from $x$. A large distance-four pile can therefore send
+one pebble to $(a,z)$ for some $a\in B(x)$. Thus there are at most
+two large distance-four piles in an unsolved placement.
+
+Suppose a pile has at least $16$ pebbles. It must be at distance
+five and can send one pebble to $(a,z)$ for every $a\in B(x)$,
+so there are no large distance-four piles. Fix a vertex $t$ at
+distance two from $x$. Every distance-five pile can send
+$\lfloor b/8\rfloor$ from its size $b$ to $(t,z)$, at distance
+two from the root. In an unsolved placement the sum of these
+deliveries is at most three. A pile of size $24$ through $31$
+therefore excludes any other large pile, for a total at most
+$31+4\cdot7=59$. A pile of size $16$ through $23$ permits at
+most one other large pile, of size at most $15$, for a total
+at most $23+15+3\cdot7=59$. A pile of size $32$ alone solves.
+
+It remains to consider pile sizes at most $15$. A total of at least
+$60$ requires at least four large piles. They must lie on layers
+four and five, with at most two on layer four. If a large pile lies
+at distance four, take two large distance-five piles. They each send
+two pebbles to $(y,z)$. The resulting four can send one to the
+neighbor $(a,z)$ that the distance-four pile can also reach. If
+all four large piles are at distance five, they send eight in total
+to $(y,z)$, which is at distance three and can solve the root.
+Thus a total of $60$ suffices at roots of eccentricity five.
+
+\section{Roots of eccentricity six}
+
+Both coordinates of an eccentricity-six root belong to $\{2,5\}$.
+Coordinate exchange leaves three representatives $(2,2)$, $(2,5)$,
+and $(5,5)$. A placement already occupying the root is solved.
+For each other placement of size $64$ on $k$ vertices, where
+$1\leq k\leq5$, enumerate the partition of $64$ given by the
+nonincreasing pile sizes, then assign these sizes to distinct
+vertices. Equal-sized piles use increasing vertex labels, giving
+exactly one assignment for each placement.
+
+For each initial source $u$ of size $b_u$, the checker excludes
+the assignment if $b_u\geq 2^{d(u,r)}$. For each pair of sources,
+it excludes the assignment if there is a meeting vertex $w$
+where the sum of their deliveries is at least $2^{d(w,r)}$.
+For a complete assignment the same meeting test uses all sources.
+Each discarded assignment has a legal solution by the path
+argument. Four deterministic sweeps next try individual legal
+moves toward the root.
+
+The final step restricts moves to edges that decrease distance
+from the root. For each vertex $v$ maintain the componentwise
+minimal vectors of initial consumption that can produce one pebble
+at $v$. Initialize each occupied vertex with its own unit vector.
+Process vertices in decreasing distance. At $v$, take all sums of
+two input vectors, including the sum of a vector with itself.
+Discard sums exceeding the initial placement in any component.
+Insert each remaining sum at every closer neighbor, removing any
+vector dominated by a smaller one. The two copies can be produced
+using disjoint initial tokens and merged by a legal move. Conversely,
+the ancestry of a pebble that reaches the root by descending moves
+gives exactly such a tree. Its leaves are initial tokens and its
+internal nodes are moves that merge two pebbles from the same
+neighbor. Replacing a consumption vector by a smaller one
+preserves every feasible sum. Induction on the layers proves the
+check is exact for descending sequences.
+
+The executable uses bit masks to enumerate vertex assignments and
+integer lanes for the consumption vectors. A second implementation
+uses integer tuples and recursively traces ancestry from the root.
+It reconstructs the graph using Figure 1 of \cite{flocco}, which
+has a different numbering. The table records the support-five
+counts after the single- and two-source tests. The repository also
+contains the support-one through support-four counts. The second
+implementation confirms descending solutions for all $59{,}591$
+assignments left by the meeting test across the five support sizes.
+
+\begin{center}
+\begin{tabular}{c|r|r|r|r}
+Root & Assignments & Meeting test & Sweeps & Ancestry\\
+\hline
+$(2,2)$ & $132226998$ & $132186507$ & $20753$ & $19738$\\
+$(2,5)$ &  $42883752$ &  $42871008$ &  $5535$ &  $7209$\\
+$(5,5)$ &  $11196159$ &  $11190005$ &  $3213$ &  $2941$
+\end{tabular}
+\end{center}
+
+No assignment remains unresolved. The region checked is all
+placements with support at most five, across all roots.
+For the lower bound, take $63$ pebbles at a vertex of distance six
+from the root. The weighted sum $\sum_v p(v)2^{-d(v,r)}$ never
+increases under a move. Its initial value is $63/64$, whereas a
+root pebble alone contributes $1$. This gives $\pi_5(L\sq L)=64$.
+
+\section{At least sixty occupied vertices}
+
+The factor $L$ stays connected after removing any one vertex. The
+cycle on $1,2,3,4,5,6,7$ stays connected after one deletion and
+vertex $8$ has three neighbors on the cycle.
+The product stays connected after removing any three vertices.
+Indeed, an intact row and column exist and their union is connected.
+For any retained vertex, the row and column through it share only
+that vertex, so one of them contains at most one deletion. That
+fiber is connected and intersects the intact union.
+
+If a $64$-pebble placement with at least $60$ occupied vertices
+has an empty root, delete all other empty vertices. There are at
+most three of them. At least one occupied vertex has two or more
+pebbles. It has a path to the root in the remaining graph, with
+every interior vertex occupied. Starting at the double pile, one
+move per edge reaches the root along this path.
+
+The results leave supports from six through fifty-nine eligible to
+contain a counterexample on this square. They give no bound for
+unrestricted products beyond the cited work.
+
+\begin{thebibliography}{9}
+\bibitem{pulaj}
+J. Pulaj, K. Wood, and C. Yerger.
+\emph{Bilevel Programming for Pebbling Numbers of Lemke Graph Products}.
+arXiv:2411.19314, 2024.
+\bibitem{flocco}
+D. Flocco, J. Pulaj, and C. Yerger.
+\emph{Automating Weight Function Generation in Graph Pebbling}.
+Discrete Applied Mathematics, 2024. arXiv:2312.12618.
+\end{thebibliography}
+\end{document}
